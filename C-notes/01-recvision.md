@@ -27,6 +27,9 @@ An array is declared by adding square brackets and an integer value after the na
 When we are first declaring an array, we can set all of the values:`int numbers[] = {1,2,3,4,5}`. If we do not include a number for the size of the array, it will be automatically matched to the number of values.
 
 ### 2.3 - There is no String in C
+The C programming language does not have a dedicated type for representing text. We can create a 'string' using array containing char: `char name[10] = 'TairanDing';`. char represents a one byte character stored as an integer
+### 2.4 - Comparison to Java
+In java, we create an array: `int[] arr = {1, 2, 3, 4, 5};`
 
 ## 3 - Statements
 ### 3.1 - Variable Declaration & Assignment
