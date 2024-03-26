@@ -62,18 +62,82 @@ The memory of our computer is made up of many memory cells. Each memory cell can
 
 For example, for the imaginary computer below: 
 - the value of `&a` is 1.
-- the value of `*x` is 2.
-<div align="center">
-<img src="img/imaginary-comp.png" width = "600">
-</div>
+- the value of `*x` is 1.
+- There is a **QUESTION** here, `*x` equals to 1 must satisfy two points:
+    1. x must remember the value directly (which means the value is a primitive type data - int)
+    2. the type of value of x is the same type to the address type (but they are ususally hexdecimal right?)
+    - **Answer**: in C, we need to consider in a relatively low level. It's all about 0s and 1s. The same piece of data (a series of 0s and 1s) will be interpreted differently based on how it is declared and used in C. For example, a sequence of bits might be interpreted as an integer, a floating-point number, a character, or any other data type, depending on how it is declared and what operations are performed on it.
 
+<div align="center">
+    <img src="img/imaginary-comp.png" width = "500">
+</div>
 
 ### 3.4 - Pointers
 From the above example, variable `a` remembers a memory address, so it can be called a **pointer** or pointer varible.
 
 # Question
-1 - In both java and c, variables directly remember the value of primitive type data. And they also both remember the memory address of reference type data like array. 
+1 - In both java and c, variables directly remember the value of primitive type data. And they both remember the memory address of reference type data like array. 
 
 The difference between java and c lies in that in java, functions are pass by reference, whereas c functions are pass by value, although we can declare a pointer variable as the parameter to let them pass by value.
 
 2 - So every variable storing reference types data can be called a pointer in c right? Because they remember addresses instead of values.
+
+## 4 - Pointers in C
+
+### 4.1 - Memory in Real Computer
+In a real computer, memory addresses can be much bigger numbers. For example, in terms of a 32 GB of RAM, its addresses can range between 0 - 34,359,720,774. Generally, memory addresses are written as hexadecimal numbers. If we want to print an address, we need to use the format specifier `%p`:
+```C
+#include<stdio.h>
+int main(){
+    int a = 25;
+    int *b = &a;
+    printf("Value: %d\n", *b);
+    printf("Address: %p\n", b);
+}
+```
+
+### 4.2 - Pointer Variables
+Pointers are variables that contain memory addresses.
+
+A pointer can be assigned to point to different varibles during the lifetime of the program.
+
+- When we declare a pointer, we must state the type of data it points to and use an asterisk `*` before the variable name to show that it is a parameter.
+
+- If we use an asterisk beside the name *after* declaration, it will get the value in the address it points to (dereferencing)
+
+### 4.3 - Literal Pointers
+We never write literal memory addresses in our programs. This will almost always result in our program crashing.
+
+## 5 - Using Pointers with Functions
+### 5.1 - Pass by Value
+### 5.2 - Pass by Reference
+
+## 6 - Pointers & Arrays
+
+
+### 6.1 - Arrays in Memory
+When we declare an array we are simply given an amount of memory. The amount of memory is based on the number of elements and the size of each element.
+
+
+### 6.2 - Arrays are Pointers
+- Arrays are just a nicer way of using pointers (a **contiguous** block of memory).
+- **The variable that remembers the array is nothing more than a pointer to the start of the array**
+- Assume we declare an array such as `int arr[5];`. Here, `arr` is actually a pointer to the first element in the array. When we use the code `arr[2]`, it means that we start from the beginning of the array and go forward two ints to get the third element. It's the same as using the address `arr + (2*4)`.
+
+### 6.3 - Addresses of Indices in an Array
+- C uses **pointer arithmetic** to know the addresses of each index in the array
+    - which is **based on the size of the data type declared**.
+        - For a `char` array, where each `char` is a single byte, the address of each index is 1 higher than the last.
+        - For an `int` array, where each `int` is 4 bytes, the address of each index is 4 higher than the last.
+
+### 6.4 - Calculating Array Addresses
+As I stated above, the pointer arithmetic is based on the size of the data type we're using. Therefore, for `int` type data, if we want to know the **next address** in the array named `numbers`, we can just add 1*1 to the variable `numbers`: `numbers + 1`. 
+
+Then, we can get the **value** by dereferencing it: `*(numbers + 1)`, which is the same as using the array subscript operator `numbers[1]` (subscript operator is a shortcut).
+
+### 6.5 Pointers to Pointers
+It's common to see code declaring a pointer to a pointer to something. 
+- **Implicit form**:
+    - an array of strings: `char *names[4]`
+- **Explicit**:
+    - passing a pointer to a function that can be changed: `int **smallest`
