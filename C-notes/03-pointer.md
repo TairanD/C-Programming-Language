@@ -133,10 +133,10 @@ When we declare an array we are simply given an amount of memory. The amount of 
 ### 6.4 - Calculating Array Addresses
 As I stated above, the pointer arithmetic is based on the size of the data type we're using. Therefore, for `int` type data, if we want to know the **next address** in the array named `numbers`, we can just add 1*1 to the variable `numbers`: `numbers + 1`. 
 
-Then, we can get the **value** by dereferencing it: `*(numbers + 1)`, which is the same as using the array subscript operator `numbers[1]` (subscript operator is a shortcut).
+Then, we can get the **value** by dereferencing it: `*(numbers + 1)`, which is the same as using the **array subscript operator**: `numbers[1]` (subscript operator is a shortcut).
 
 ### 6.5 Pointers to Pointers
-It's common to see code declaring a pointer to a pointer to something. 
+It's common to see code declaring a pointer to a pointer to something.
 - **Implicit form**:
     - an array of strings: `char *names[4]`
 - **Explicit**:
