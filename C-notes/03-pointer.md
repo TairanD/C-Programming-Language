@@ -57,16 +57,23 @@ The memory of our computer is made up of many memory cells. Each memory cell can
 - Therefore, programmers can use variable names to conduct operations to the data inside memory units by referring to their addresses.
 
 ### 3.3 - Referencing & Dereferencing
-- Referencing: `&` can be used to find the address of a variable.
-- Dereferencing: `*` can be used to find the value of an address.
+- Referencing: `&` can be used to find the address/pointer/reference from a variable/value. It can be read as “address of”. In order to be valid, a pointer has to be set to the address of a variable of the same type as the pointer, without the asterisk:
+```
+int  c1;
+int* p1;
+c1 = 5;
+p1 = &c1;
+//p1 references c1
+```
+- Dereferencing: `*` can be used to find the value from a pointer/address. It can be read as “value pointed by”.
 
 For example, for the imaginary computer below: 
 - the value of `&a` is 1.
 - the value of `*x` is 1.
 - There is a **QUESTION** here, `*x` equals to 1 must satisfy two points:
-    1. x must remember the value directly (which means the value is a primitive type data - int)
-    2. the type of value of x is the same type to the address type (but they are ususally hexdecimal right?)
-    - **Answer**: in C, we need to consider in a relatively low level. It's all about 0s and 1s. The same piece of data (a series of 0s and 1s) will be interpreted differently based on how it is declared and used in C. For example, a sequence of bits might be interpreted as an integer, a floating-point number, a character, or any other data type, depending on how it is declared and what operations are performed on it.
+    1. x must remember the value directly (which means the value is a primitive type data - int) - **Answer: C programming language is always pass-by-value.**
+    
+    Note: in C, we need to consider in a relatively low level. It's all about 0s and 1s. The same piece of data (a series of 0s and 1s) will be interpreted differently based on how it is declared and used in C. For example, a sequence of bits might be interpreted as an integer, a floating-point number, a character, or any other data type, depending on how it is declared and what operations are performed on it.
 
 <div align="center">
     <img src="img/imaginary-comp.png" width = "500">
@@ -75,12 +82,7 @@ For example, for the imaginary computer below:
 ### 3.4 - Pointers
 From the above example, variable `a` remembers a memory address, so it can be called a **pointer** or pointer varible.
 
-# Question
-1 - In both java and c, variables directly remember the value of primitive type data. And they both remember the memory address of reference type data like array. 
-
-The difference between java and c lies in that in java, functions are pass by reference, whereas c functions are pass by value, although we can declare a pointer variable as the parameter to let them pass by value.
-
-2 - So every variable storing reference types data can be called a pointer in c right? Because they remember addresses instead of values.
+#### Note: In both java and c, variables directly remember the value of primitive type data. And they both remember the memory address of reference type data like array. Additionally, their functions are both pass-by-value!
 
 ## 4 - Pointers in C
 
