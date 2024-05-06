@@ -103,7 +103,7 @@ Pointers are variables that contain memory addresses.
 
 A pointer can be assigned to point to different varibles during the lifetime of the program.
 
-- When we declare a pointer, we must state the type of data it points to and use an asterisk `*` before the variable name to show that it is a parameter.
+- When we declare a pointer, we must state the type of data it points to and use an asterisk `*` before the variable name to show that it is a pointer.
 
 - If we use an asterisk beside the name *after* declaration, it will get the value in the address it points to (dereferencing)
 
